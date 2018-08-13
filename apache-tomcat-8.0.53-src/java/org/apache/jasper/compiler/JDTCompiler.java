@@ -337,11 +337,11 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
             } else if(opt.equals("1.7")) {
                 settings.put(CompilerOptions.OPTION_Source,
                              CompilerOptions.VERSION_1_7);
-            } else if(opt.equals("1.8")) {
+            } /*else if(opt.equals("1.8")) {
                 settings.put(CompilerOptions.OPTION_Source,
                              CompilerOptions.VERSION_1_8);
             // Support old format that was used in EA implementation as well
-            } else if(opt.equals("9") || opt.equals("1.9")) {
+            }*/ else if(opt.equals("9") || opt.equals("1.9")) {
                 settings.put(CompilerOptions.OPTION_Source,
                              JDT_JAVA_9_VERSION);
             } else if(opt.equals("10")) {
@@ -389,12 +389,12 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
                              CompilerOptions.VERSION_1_7);
                 settings.put(CompilerOptions.OPTION_Compliance,
                         CompilerOptions.VERSION_1_7);
-            } else if(opt.equals("1.8")) {
+            }/* else if(opt.equals("1.8")) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform,
                              CompilerOptions.VERSION_1_8);
                 settings.put(CompilerOptions.OPTION_Compliance,
                         CompilerOptions.VERSION_1_8);
-            } else if(opt.equals("9") || opt.equals("1.9")) {
+            }*/ else if(opt.equals("9") || opt.equals("1.9")) {
                 settings.put(CompilerOptions.OPTION_TargetPlatform,
                              JDT_JAVA_9_VERSION);
                 settings.put(CompilerOptions.OPTION_Compliance,
