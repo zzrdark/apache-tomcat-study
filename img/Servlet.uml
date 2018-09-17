@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javax.servlet.Servlet</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">javax.servlet.ServletConfig</node>
+    <node x="69.5" y="160.0">javax.servlet.http.HttpServlet</node>
+    <node x="60.0" y="80.0">javax.servlet.GenericServlet</node>
+    <node x="145.0" y="0.0">javax.servlet.Servlet</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javax.servlet.http.HttpServlet" target="javax.servlet.GenericServlet">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.servlet.GenericServlet" target="javax.servlet.ServletConfig">
+      <point x="-32.75" y="-15.0" />
+      <point x="92.75" y="55.0" />
+      <point x="62.5" y="55.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.servlet.GenericServlet" target="javax.servlet.Servlet">
+      <point x="32.75" y="-15.0" />
+      <point x="158.25" y="55.0" />
+      <point x="188.5" y="55.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="44.0" y="15.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

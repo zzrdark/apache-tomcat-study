@@ -900,6 +900,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
 
     @Override
+    //启动了线程池
     protected void initInternal() throws LifecycleException {
         BlockingQueue<Runnable> startStopQueue = new LinkedBlockingQueue<>();
         startStopExecutor = new ThreadPoolExecutor(
@@ -925,6 +926,7 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         // Start our subordinate components, if any
         logger = null;
         getLogger();
+        //如果有Cluster 和 Realm 则启动
         Cluster cluster = getClusterInternal();
         if ((cluster != null) && (cluster instanceof Lifecycle))
             ((Lifecycle) cluster).start();
@@ -933,13 +935,16 @@ public abstract class ContainerBase extends LifecycleMBeanBase
             ((Lifecycle) realm).start();
 
         // Start our child containers, if any
+        //获取所有子容器
         Container children[] = findChildren();
         List<Future<Void>> results = new ArrayList<>();
+        //增加处理子容器的线程
         for (int i = 0; i < children.length; i++) {
             results.add(startStopExecutor.submit(new StartChild(children[i])));
         }
 
         boolean fail = false;
+        //处理子容器线程
         for (Future<Void> result : results) {
             try {
                 result.get();
@@ -955,10 +960,11 @@ public abstract class ContainerBase extends LifecycleMBeanBase
         }
 
         // Start the Valves in our pipeline (including the basic), if any
+        //启动管道
         if (pipeline instanceof Lifecycle)
             ((Lifecycle) pipeline).start();
 
-
+        //更新生命周期状态
         setState(LifecycleState.STARTING);
 
         // Start our thread

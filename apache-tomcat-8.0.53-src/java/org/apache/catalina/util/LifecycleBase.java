@@ -163,7 +163,6 @@ public abstract class LifecycleBase implements Lifecycle {
         }
     }
 
-
     /**
      * Sub-classes must ensure that the state is changed to
      * {@link LifecycleState#STARTING} during the execution of this method.
