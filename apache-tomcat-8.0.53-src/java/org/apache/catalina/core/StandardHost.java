@@ -845,17 +845,21 @@ public class StandardHost extends ContainerBase implements Host {
     protected synchronized void startInternal() throws LifecycleException {
 
         // Set error report valve
+        //拿到"org.apache.catalina.valves.ErrorReportValve"
         String errorValve = getErrorReportValveClass();
         if ((errorValve != null) && (!errorValve.equals(""))) {
             try {
                 boolean found = false;
+                //拿到所有的管道
                 Valve[] valves = getPipeline().getValves();
+                //如果没有ErrorReportValve管道 通过反射去新建一个类
                 for (Valve valve : valves) {
                     if (errorValve.equals(valve.getClass().getName())) {
                         found = true;
                         break;
                     }
                 }
+                //反射
                 if(!found) {
                     Valve valve =
                         (Valve) Class.forName(errorValve).getDeclaredConstructor().newInstance();

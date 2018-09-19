@@ -326,6 +326,7 @@ public class StandardWrapper extends ContainerBase
             this.available = available;
         else
             this.available = 0L;
+        //更改有效期
         support.firePropertyChange("available", Long.valueOf(oldAvailable),
                                    Long.valueOf(this.available));
 
@@ -1691,6 +1692,7 @@ public class StandardWrapper extends ContainerBase
         // Start up this component
         super.startInternal();
 
+        //设置有效期  在这里，对当前做有效期设置
         setAvailable(0L);
 
         // Send j2ee.state.running notification

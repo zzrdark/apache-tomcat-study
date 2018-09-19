@@ -170,7 +170,7 @@ public class StandardPipeline extends LifecycleBase
                 ((Lifecycle) current).start();
             current = current.getNext();
         }
-
+        //设置状态
         setState(LifecycleState.STARTING);
     }
 
@@ -184,7 +184,7 @@ public class StandardPipeline extends LifecycleBase
      */
     @Override
     protected synchronized void stopInternal() throws LifecycleException {
-
+        //设置状态
         setState(LifecycleState.STOPPING);
 
         // Stop the Valves in our pipeline (including the basic), if any
