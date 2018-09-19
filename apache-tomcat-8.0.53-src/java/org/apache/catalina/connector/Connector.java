@@ -61,12 +61,15 @@ public class Connector extends LifecycleMBeanBase  {
     public Connector() {
         this(null);
     }
-
+    //不传的话默认Http1.1
     public Connector(String protocol) {
+        //拿到协议类型
         setProtocol(protocol);
         // Instantiate protocol handler
+        //新建一个ProtocolHandler类
         ProtocolHandler p = null;
         try {
+            //拿到HTTP/1.1 protocolHandler实现类
             Class<?> clazz = Class.forName(protocolHandlerClassName);
             p = (ProtocolHandler) clazz.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
