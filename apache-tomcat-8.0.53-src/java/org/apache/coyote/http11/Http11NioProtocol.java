@@ -60,7 +60,9 @@ public class Http11NioProtocol extends AbstractHttp11JsseProtocol<NioChannel> {
 
 
     public Http11NioProtocol() {
+        //创建NioEndpoint 来处理处理Socket
         endpoint=new NioEndpoint();
+        //创建一个Http11ConnectionHandler类型的Handler
         cHandler = new Http11ConnectionHandler(this);
         ((NioEndpoint) endpoint).setHandler(cHandler);
         setSoLinger(Constants.DEFAULT_CONNECTION_LINGER);

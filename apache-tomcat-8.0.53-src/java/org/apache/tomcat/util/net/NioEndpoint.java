@@ -540,6 +540,7 @@ public class NioEndpoint extends AbstractEndpoint<NioChannel> {
             //disable blocking, APR style, we are gonna be polling it
             socket.configureBlocking(false);
             Socket sock = socket.socket();
+            //设置Socket参数
             socketProperties.setProperties(sock);
 
             NioChannel channel = nioChannels.pop();
@@ -557,7 +558,7 @@ public class NioEndpoint extends AbstractEndpoint<NioChannel> {
                     NioBufferHandler bufhandler = new NioBufferHandler(socketProperties.getAppReadBufSize(),
                                                                        socketProperties.getAppWriteBufSize(),
                                                                        socketProperties.getDirectBuffer());
-
+                    //封装成Channel
                     channel = new NioChannel(socket, bufhandler);
                 }
             } else {
@@ -704,6 +705,8 @@ public class NioEndpoint extends AbstractEndpoint<NioChannel> {
                     // setSocketOptions() will add channel to the poller
                     // if successful
                     if (running && !paused) {
+                        //这里对Socket进行处理
+                        //并且自己封装成Channel
                         if (!setSocketOptions(socket)) {
                             countDownConnection();
                             closeSocket(socket);
